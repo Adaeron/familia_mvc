@@ -7,7 +7,7 @@ public class Cuchillo extends Arma {
 	}
 
 	public Cuchillo() {
-		
+		super(Integer.valueOf(10),Integer.valueOf(1));
 	}
 
 }

@@ -7,7 +7,7 @@ public class Ametralladora extends Arma {
 	}
 
 	public Ametralladora() {
-		
+		super(Integer.valueOf(50),Integer.valueOf(100));
 	}
 	
 }

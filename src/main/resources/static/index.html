@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html>
 	<head>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
-			<title>La Familia</title>
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+		<script src="/familia/script.js"></script>
+		<title>La Familia</title>
 	</head>
 	<body>
 		<h1>La Familia</h1>
-		<button>Agregar Criminal</button>
-		<button>Agregar Respetable</button>
-		<button>Listar Integrantes</button>
+
+		<h3>Formulario Criminales</h3>
+		<form id="formCriminal">
+			<label for="nombreCriminal">Nombre</label><br>
+			<input type="text" id="nombreCriminal" name="nombreCriminal"><br>
+			
+			<label for="idCriminal">ID</label><br>
+			<input type="number" id="idCriminal" name="idCriminal"><br>
+
+			<label for="honorBaseCriminal">Honor</label><br>
+			<input type="number" id="honorBaseCriminal" name="honorBaseCriminal"><br>
+			
+			<label for="armas">
+				Armas
+				
+				<select id="selectArmas">
+					<option value="Ametralladora">Ametralladora</option>
+					<option value="Bomba">Bomba</option>
+					<option value="Cuchillo">Cuchillo</option>
+				</select>
+
+				<button type="button" value="agregar arma" id="addArmaBtn" onclick="addArma()">Agregar arma</button><br>
+
+				<label for="listaDeArmas">Lista de armas: </label><br>
+				<select id="listaDeArmas" name="listaDeArmas" multiple></select><br>
+				
+				<button type="button" id="borrarArmaBtn" onclick="deleteArma()">Borrar arma</button><br>
+			</label>
+			<br>
+			<input type="submit" onclick="addCriminal()" id="botonAgregarCriminal" value="Agregar Criminal">
+		</form>
+		
+		<h3>Formulario Respetables</h3>
+		<form id="formRespetable">
+			<label for="nombreRespetable">Nombre</label><br>
+			<input id="nombreRespetable" type="text"><br>
+			
+			<label for="idRespetable">ID</label><br>
+			<input id="idRespetable" type="number"><br>
+			
+			<label for="honorBaseRespetable">Honor</label><br>
+			<input id="honorBaseRespetable" type="number"><br>
+
+			<label for="cargoPolitico">Cargo politico</label><br>
+			<input id="cargoPolitico" type="checkbox"><br>
+			
+				<label for="titulos">
+					Titulos 
+					<input type="text" id="descripcionTitulo" placeholder="Inserte nombre del titulo">
+					<button type="button" value="agregar titulo" id="addTituloBtn" onclick="addTitulo()">Agregar titulo</button><br>
+					<select name="listaDeTitulos" id="listaDeTitulos" multiple></select><br>
+					<button type="button" id="deleteTituloBtn" onclick="deleteTitulo()">Borrar Titulos</button><br>
+				</label>
+			<br>
+			
+			<input type="submit" id="agregarRespetable" value="Agregar Respetable" onclick="addRespetable()">
+		</form>
+		<br>
+		
+		<h3>Lista de integrantes</h3>
+		<table id="tablaIntegrantes"></table><br>
+		<button id="getIntegrantes" onclick="getIntegrantes()">Listar Integrantes</button>
+		
 	</body>
 </html>

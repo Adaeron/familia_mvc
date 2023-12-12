@@ -69,6 +69,14 @@ public class RespetableDto {
 	public void setPuntosDeHonorBase(Integer puntosDeHonor) {
 		this.puntosDeHonorBase = puntosDeHonor;
 	}
+	
+	public Boolean getTieneCargoPolitico() {
+		return tieneCargoPolitico;
+	}
+	
+	public void setTieneCargoPolitico(Boolean cargoPolitico) {
+		this.tieneCargoPolitico = cargoPolitico;
+	}
 
 	public ArrayList<TituloDto> getTitulos() {
 		return titulos;
