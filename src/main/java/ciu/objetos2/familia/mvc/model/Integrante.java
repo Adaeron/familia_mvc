@@ -1,5 +1,7 @@
 package ciu.objetos2.familia.mvc.model;
 
+import ciu.objetos2.familia.mvc.dto.IntegranteDto;
+
 public abstract class Integrante {
 	protected Integer idIntegrante;
 	protected Integer puntosDeHonorBase;
@@ -17,6 +19,8 @@ public abstract class Integrante {
 	
 	public abstract Integer getPuntosDeHonor();
 	public abstract Boolean esCapo();
+	
+	public abstract IntegranteDto toDto();
 	
 	public Integer getPuntosDeHonorBase() {
 		return this.puntosDeHonorBase;

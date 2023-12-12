@@ -1,5 +1,6 @@
 package ciu.objetos2.familia.mvc.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ciu.objetos2.familia.mvc.dto.CriminalDto;
+import ciu.objetos2.familia.mvc.dto.IntegranteDto;
 import ciu.objetos2.familia.mvc.dto.RespetableDto;
 import ciu.objetos2.familia.mvc.model.Integrante;
 import ciu.objetos2.familia.mvc.store.IntegranteStore;
@@ -21,8 +23,11 @@ import ciu.objetos2.familia.mvc.store.IntegranteStore;
 public class FamiliaController {
 	
 	@GetMapping("/listar")
-	public Collection<Integrante> lista() {
-		return IntegranteStore.getInstance().findAll();
+	public Collection<IntegranteDto> lista() {
+		Collection<Integrante>integrantes = IntegranteStore.getInstance().findAll();
+		Collection<IntegranteDto>integrantesDto = new ArrayList<IntegranteDto>();
+		integrantes.forEach(i -> integrantesDto.add(i.toDto()));
+		return integrantesDto;
 	}
 	
 	@GetMapping("/listarIntegrante/{id}")
@@ -31,14 +36,14 @@ public class FamiliaController {
 	}
 	
 	@PostMapping("/agregarCriminal")
-	public Integrante agregar(@RequestBody CriminalDto cDto) {
-		return IntegranteStore.getInstance().addIntegrante(cDto.toEntity());
+	public void agregar(@RequestBody CriminalDto cDto) {
+		IntegranteStore.getInstance().addIntegrante(cDto.toEntity());
 		
 	}
 	
 	@PostMapping("/agregarRespetable")
-	public Integrante agregar(@RequestBody RespetableDto r) {
-		return IntegranteStore.getInstance().addIntegrante(r.toEntity());
+	public void agregar(@RequestBody RespetableDto r) {
+		IntegranteStore.getInstance().addIntegrante(r.toEntity());
 	}
 	
 	@DeleteMapping("/borrarIntegrante/{id}")

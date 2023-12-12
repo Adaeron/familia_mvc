@@ -12,6 +12,9 @@ public class ArmaDto {
 		this.tipo = tipo;
 	}
 	
+	public ArmaDto() {
+	}
+
 	public Arma toEntity() {
 		if(this.tipo.equalsIgnoreCase("Cuchillo")) {
 			Cuchillo c = new Cuchillo();

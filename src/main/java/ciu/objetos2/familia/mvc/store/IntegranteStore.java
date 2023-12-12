@@ -3,11 +3,8 @@ package ciu.objetos2.familia.mvc.store;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import ciu.objetos2.familia.mvc.model.Arma;
-import ciu.objetos2.familia.mvc.model.Criminal;
 import ciu.objetos2.familia.mvc.model.Integrante;
-import ciu.objetos2.familia.mvc.model.Respetable;
-import ciu.objetos2.familia.mvc.model.Titulo;
+
 
 public class IntegranteStore {
 	private Collection<Integrante> integrantes;
@@ -17,9 +14,15 @@ public class IntegranteStore {
 		this.integrantes = new ArrayList<Integrante>();
 	}
 	
-	public Integrante addIntegrante(Integrante integrante) {
-		this.integrantes.add(integrante);
-		return integrante;
+	public void addIntegrante(Integrante integrante) {
+		Integrante integranteExistente = this.findById(integrante.getIdIntegrante());
+		if(integranteExistente == null) {
+			this.integrantes.add(integrante);
+			System.out.println("El integrante fue añadido exitosamente");
+		}else {
+			System.out.println("El integrante ya existe");
+		}
+		
 	}
 	
 	public Collection<Integrante> findAll(){

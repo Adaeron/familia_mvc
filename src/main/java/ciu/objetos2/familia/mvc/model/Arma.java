@@ -1,5 +1,7 @@
 package ciu.objetos2.familia.mvc.model;
 
+import ciu.objetos2.familia.mvc.dto.ArmaDto;
+
 public abstract class Arma {
 	protected String tipo;
 	protected Integer puntosDeHonorArma;
@@ -51,6 +53,14 @@ public abstract class Arma {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public ArmaDto toDto() {
+		ArmaDto armaDto = new ArmaDto();
+		
+		armaDto.setTipo(tipo);
+		
+		return armaDto;
 	}
 	
 	

@@ -70,6 +70,15 @@
 		<h3>Lista de integrantes</h3>
 		<table id="tablaIntegrantes"></table><br>
 		<button id="getIntegrantes" onclick="getIntegrantes()">Listar Integrantes</button>
+		<br>
+
+		<h3>Borrar Integrante</h3>
+		<form id="removeIntegrante">
+			<label for="idIntegrante">
+				<input type="number" id="idIntegrante" placeholder="Ingrese ID del integrante a borrar">
+			</label>
+			<button type="button" id="removeIntegranteBtn" onclick="removeIntegrante()">Borrar Integrante</button>
+		</form>
 		
 	</body>
 </html>

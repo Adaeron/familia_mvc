@@ -169,3 +169,16 @@ async function getIntegrantes() {
     }
     
 }
+
+function removeIntegrante(){
+    const idIntegrante = document.getElementById("idIntegrante").value;
+
+    axios.delete(`http://localhost:8080/familia/integrantes/borrarIntegrante/${idIntegrante}`)
+        .then(response =>{
+            getIntegrantes();
+            console.log(response);
+        })
+       .catch(error => {
+            console.log(error);
+        });
+}

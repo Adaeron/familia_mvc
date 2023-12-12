@@ -2,6 +2,9 @@ package ciu.objetos2.familia.mvc.model;
 
 import java.util.ArrayList;
 
+import ciu.objetos2.familia.mvc.dto.ArmaDto;
+import ciu.objetos2.familia.mvc.dto.IntegranteDto;
+
 public class Criminal extends Integrante {
 	private ArrayList<Arma> armas;
 	
@@ -12,6 +15,24 @@ public class Criminal extends Integrante {
 	
 	public Criminal() {
 		this.armas = new ArrayList<Arma>();
+	}
+	
+	@Override
+	public IntegranteDto toDto() {
+		IntegranteDto integranteDto = new IntegranteDto();
+		
+		integranteDto.setNombre(this.nombre);
+		integranteDto.setIdIntegrante(this.idIntegrante);
+		integranteDto.setPuntosDeHonorBase(this.puntosDeHonorBase);
+		integranteDto.setArmas(this.armasToDto(armas));
+		
+		return integranteDto;
+	}
+	
+	private ArrayList<ArmaDto> armasToDto(ArrayList<Arma> armas){
+		ArrayList<ArmaDto> armasDto = new ArrayList<ArmaDto>();
+		armas.forEach(a -> armasDto.add(a.toDto()));
+		return armasDto;
 	}
 
 	@Override

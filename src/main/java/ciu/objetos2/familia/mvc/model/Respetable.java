@@ -2,6 +2,9 @@ package ciu.objetos2.familia.mvc.model;
 
 import java.util.ArrayList;
 
+import ciu.objetos2.familia.mvc.dto.IntegranteDto;
+import ciu.objetos2.familia.mvc.dto.TituloDto;
+
 public class Respetable extends Integrante {
 	
 	
@@ -32,6 +35,25 @@ public class Respetable extends Integrante {
 	@Override
 	public Boolean esCapo() {
 		return this.getPuntosDeHonor() > 100 && this.tieneCargoPolitico;
+	}
+	
+	@Override
+	public IntegranteDto toDto() {
+		IntegranteDto integranteDto = new IntegranteDto();
+		
+		integranteDto.setNombre(this.nombre);
+		integranteDto.setIdIntegrante(this.idIntegrante);
+		integranteDto.setPuntosDeHonorBase(this.puntosDeHonorBase);
+		integranteDto.setTieneCargoPolitico(this.tieneCargoPolitico);
+		integranteDto.setTitulos(this.titulosToDto(titulos));
+		
+		return integranteDto;
+	}
+	
+	private ArrayList<TituloDto> titulosToDto(ArrayList<Titulo> titulos){
+		ArrayList<TituloDto> titulosDto = new ArrayList<TituloDto>();
+		titulos.forEach(t -> titulosDto.add(t.toDto()));
+		return titulosDto;
 	}
 	
 	//Getters & Setters
